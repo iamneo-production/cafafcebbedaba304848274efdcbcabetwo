@@ -20,19 +20,19 @@ h1 {
 .row {
   display: flex;
   justify-content: center;
-  margin-top: 20px;
 }
 
 .box {
   width: 100px;
   height: 100px;
-  margin: 0 10px;
+  margin: 2px;
   background-color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  border: 2px solid #333;
+  border: 1px solid #333;
+  border-radius: 10px;
 }
 
 .box input {
@@ -41,9 +41,6 @@ h1 {
   font-size: 24px;
   color: #333;
   text-align: center;
-  background: none;
-  border: none;
-  outline: none;
 }
 
 .box:hover {
