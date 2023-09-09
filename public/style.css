@@ -42,25 +42,35 @@ h1 {
   color: #333;
   text-align: center;
 }
-
-
+.btn:disabled{
+  cursor: no-drop;
+}
 .box:hover {
   background-color: #ddd;
 }
-
+.result-container{
+  border: 1px solid;
+  border-radius: 5px;
+  background-color: #ddd;
+  width: 200px;
+  margin: auto;
+  margin-top: 20px;
+}
 .result {
   font-size: 24px;
   margin-top: 20px;
-  color: #333;
+  color: black;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 #reset {
   font-size: 20px;
   margin-top: 20px;
   padding: 10px 20px;
-  background-color: #333;
-  color: #fff;
-  border: none;
+  background-color: #ddd;
+  color: black;
+  border: 1px solid;
+  border-radius: 5px;
   cursor: pointer;
 }
 
