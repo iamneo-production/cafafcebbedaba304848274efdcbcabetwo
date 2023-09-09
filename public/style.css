@@ -7,20 +7,8 @@ body {
     background-repeat: no-repeat;
     background-position: center center;
     font-family: "Radio Canada", sans-serif;
+    text-align: center;
   }
-  
-/* Enter your styling here */
-/* Reset default margin and padding */
-body, h1, p {
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f0f0f0;
-  text-align: center;
-}
 
 h1 {
   font-size: 36px;
@@ -31,13 +19,12 @@ h1 {
 .row {
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 5px;
 }
 
-.box {
+.box input{
   width: 100px;
   height: 100px;
-  margin: 0 10px;
   background-color: #fff;
   display: flex;
   align-items: center;
@@ -45,7 +32,6 @@ h1 {
   font-size: 24px;
   color: #333;
   cursor: pointer;
-  border: 2px solid #333;
 }
 
 .box:hover {
