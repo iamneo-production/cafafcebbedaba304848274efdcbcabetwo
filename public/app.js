@@ -3,6 +3,7 @@ let cells = ['', '', '', '', '', '', '', '', ''];
 let currentPlayer = 'X';
 let result = document.querySelector('.result');
 let btns = document.querySelectorAll('.btn');
+let resetButton = document.querySelector('#reset');
 let conditions = [
     [0, 1, 2],
     [3, 4, 5],
@@ -28,9 +29,11 @@ const ticTacToe = (element, index) => {
         if (checkWinner()) {
             result.textContent = `Player ${currentPlayer} wins!`;
             disableButtons();
+            enableResetButton(); // Enable the reset button
         } else if (cells.every(cell => cell !== '')) {
             result.textContent = "It's a draw!";
             disableButtons();
+            enableResetButton(); // Enable the reset button
         } else {
             // Switch to the next player
             currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
@@ -58,6 +61,11 @@ const disableButtons = () => {
     });
 };
 
+// Function to enable the reset button
+const enableResetButton = () => {
+    resetButton.disabled = false;
+};
+
 // Function to reset the game
 const resetGame = () => {
     cells = ['', '', '', '', '', '', '', '', ''];
@@ -70,6 +78,9 @@ const resetGame = () => {
         btn.addEventListener('click', handleButtonClick);
         btn.style.pointerEvents = 'auto';
     });
+
+    // Disable the reset button at the start of a new game
+    resetButton.disabled = true;
 };
 
 // Event listener for button clicks
@@ -78,12 +89,8 @@ const handleButtonClick = (event) => {
     ticTacToe(event.target, index);
 };
 
-// Add event listeners
-btns.forEach(btn => {
-    btn.addEventListener('click', handleButtonClick);
-});
-
-document.querySelector('#reset').addEventListener('click', resetGame);
+// Event listener for reset button click
+resetButton.addEventListener('click', resetGame);
 
 // Initialize the game
 resetGame();
