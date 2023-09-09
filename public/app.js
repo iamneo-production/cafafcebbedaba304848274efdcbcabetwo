@@ -20,7 +20,8 @@ const ticTacToe = (element, index) => {
     if (cells[index] === '' && !checkWinner()) {
         // Set the current player's symbol in the cell
         cells[index] = currentPlayer;
-        element.textContent = currentPlayer;
+        element.value = currentPlayer; // Set the value of the input
+        element.disabled = true; // Disable the input
         element.classList.add(currentPlayer);
 
         // Check for a win
@@ -63,8 +64,9 @@ const resetGame = () => {
     currentPlayer = 'X';
     result.textContent = "Player X's Turn";
     btns.forEach(btn => {
-        btn.textContent = '';
+        btn.value = '';
         btn.classList.remove('X', 'O');
+        btn.disabled = false; // Enable the input
         btn.addEventListener('click', handleButtonClick);
         btn.style.pointerEvents = 'auto';
     });
@@ -76,12 +78,11 @@ const handleButtonClick = (event) => {
     ticTacToe(event.target, index);
 };
 
-// Add event listeners to buttons
+// Add event listeners
 btns.forEach(btn => {
     btn.addEventListener('click', handleButtonClick);
 });
 
-// Add event listener to the reset button
 document.querySelector('#reset').addEventListener('click', resetGame);
 
 // Initialize the game
