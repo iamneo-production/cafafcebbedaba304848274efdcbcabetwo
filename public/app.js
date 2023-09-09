@@ -26,7 +26,7 @@ const ticTacToe = (element, index) => {
 
         // Check for a win
         if (checkWinner()) {
-            result.textContent = `${currentPlayer} wins!`;
+            result.textContent = `Player ${currentPlayer} wins!`;
             disableButtons();
         } else if (cells.every(cell => cell !== '')) {
             result.textContent = "It's a draw!";
@@ -34,7 +34,7 @@ const ticTacToe = (element, index) => {
         } else {
             // Switch to the next player
             currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
-            result.textContent = `Player ${currentPlayer}'s Turn`;
+            result.textContent = `Player ${currentPlayer} Turn`;
         }
     }
 };
@@ -62,7 +62,7 @@ const disableButtons = () => {
 const resetGame = () => {
     cells = ['', '', '', '', '', '', '', '', ''];
     currentPlayer = 'X';
-    result.textContent = "Player X's Turn";
+    result.textContent = "Player X Turn";
     btns.forEach(btn => {
         btn.value = '';
         btn.classList.remove('X', 'O');
