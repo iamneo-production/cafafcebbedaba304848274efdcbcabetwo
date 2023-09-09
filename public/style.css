@@ -9,6 +9,7 @@ body {
     font-family: "Radio Canada", sans-serif;
   }
   
+/* Enter your styling here */
 /* Reset default margin and padding */
 body, h1, p {
   margin: 0;
@@ -69,4 +70,14 @@ h1 {
 
 #reset:hover {
   background-color: #555;
+}
+
+/* Style for player X */
+.X {
+  color: #ff5733; /* Red color for X */
+}
+
+/* Style for player O */
+.O {
+  color: #33b5e5; /* Blue color for O */
 }

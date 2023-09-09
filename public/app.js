@@ -22,7 +22,7 @@ const ticTacToe = (element, index) => {
         cells[index] = currentPlayer;
         element.textContent = currentPlayer;
         element.classList.add(currentPlayer);
-        
+
         // Check for a win
         if (checkWinner()) {
             result.textContent = `${currentPlayer} wins!`;
