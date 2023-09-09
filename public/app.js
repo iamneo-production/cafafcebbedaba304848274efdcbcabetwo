@@ -1,62 +1,33 @@
-let cells = ['', '', '', '', '', '', '', '', ''];
-let currentPlayer = 'X';
-let result = document.querySelector('.result');
-let btns = document.querySelectorAll('.btn');
-let conditions = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6]
+let currentPlayer = 'x';
+let board = ['', '', '', '', '', '', '', '', ''];
+const winPatterns = [
+    [0, 1, 2], [3, 4, 5], [6, 7, 8], // Rows
+    [0, 3, 6], [1, 4, 7], [2, 5, 8], // Columns
+    [0, 4, 8], [2, 4, 6]             // Diagonals
 ];
 
-const ticTacToe = (element, index) => {
-    if (cells[index] === '') {
-        cells[index] = currentPlayer;
-        element.textContent = currentPlayer;
-        element.disabled = true;
-
-        if (checkWin(currentPlayer)) {
-            result.textContent = `Player ${currentPlayer} wins!`;
-            disableAllButtons();
-        } else if (cells.every(cell => cell !== '')) {
-            result.textContent = "It's a draw!";
-        } else {
-            currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
-            result.textContent = `Player ${currentPlayer}'s Turn`;
-        }
+function makeMove(cell) {
+    const index = Array.from(cell.parentNode.children).indexOf(cell);
+    if (board[index] === '' && !checkWinner()) {
+        board[index] = currentPlayer;
+        cell.classList.add(currentPlayer);
+        cell.innerText = currentPlayer.toUpperCase();
+        currentPlayer = currentPlayer === 'x' ? 'o' : 'x';
+        checkWinner();
     }
-};
+}
 
-const checkWin = (player) => {
-    for (const condition of conditions) {
-        const [a, b, c] = condition;
-        if (cells[a] === player && cells[b] === player && cells[c] === player) {
+function checkWinner() {
+    for (const pattern of winPatterns) {
+        const [a, b, c] = pattern;
+        if (board[a] && board[a] === board[b] && board[a] === board[c]) {
+            document.getElementById('message').innerText = `${board[a].toUpperCase()} wins!`;
             return true;
         }
     }
+    if (board.every(cell => cell !== '')) {
+        document.getElementById('message').innerText = "It's a draw!";
+        return true;
+    }
     return false;
-};
-
-const disableAllButtons = () => {
-    btns.forEach(btn => btn.disabled = true);
-};
-
-const resetGame = () => {
-    cells = ['', '', '', '', '', '', '', '', ''];
-    currentPlayer = 'X';
-    result.textContent = "Player X's Turn";
-    btns.forEach(btn => {
-        btn.textContent = '';
-        btn.disabled = false;
-    });
-};
-
-btns.forEach((btn, i) => {
-    btn.addEventListener('click', () => ticTacToe(btn, i));
-});
-
-document.querySelector('#reset').addEventListener('click', resetGame);
+}

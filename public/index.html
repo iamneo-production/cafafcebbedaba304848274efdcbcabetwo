@@ -8,19 +8,19 @@
 </head>
 <body>
     <h1>Tic Tac Toe</h1>
-    <div id="board" class="board">
-        <button class="btn" onclick="ticTacToe(this, 0)"></button>
-        <button class="btn" onclick="ticTacToe(this, 1)"></button>
-        <button class="btn" onclick="ticTacToe(this, 2)"></button>
-        <button class="btn" onclick="ticTacToe(this, 3)"></button>
-        <button class="btn" onclick="ticTacToe(this, 4)"></button>
-        <button class="btn" onclick="ticTacToe(this, 5)"></button>
-        <button class="btn" onclick="ticTacToe(this, 6)"></button>
-        <button class="btn" onclick="ticTacToe(this, 7)"></button>
-        <button class="btn" onclick="ticTacToe(this, 8)"></button>
+    <div id="tic-tac-toe-board">
+        <div class="cell" onclick="makeMove(this)"></div>
+        <div class="cell" onclick="makeMove(this)"></div>
+        <div class="cell" onclick="makeMove(this)"></div>
+        <div class="cell" onclick="makeMove(this)"></div>
+        <div class="cell" onclick="makeMove(this)"></div>
+        <div class="cell" onclick="makeMove(this)"></div>
+        <div class="cell" onclick="makeMove(this)"></div>
+        <div class="cell" onclick="makeMove(this)"></div>
+        <div class="cell" onclick="makeMove(this)"></div>
     </div>
-    <div class="result">Player X's Turn</div>
-    <button id="reset">Reset Game</button>
+    <div id="message"></div>
+
     <script src="app.js"></script>
 </body>
 </html>
